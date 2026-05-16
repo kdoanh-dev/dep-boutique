@@ -3,299 +3,405 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đẹp Boutique | Giỏ Hàng & Liên Hệ</title>
-    
-    <!-- Fonts & Icons -->
+    <title>Váy Lụa Satin Luxy | Đẹp Boutique</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --primary-gold: #c5a059;
-            --vintage-gold: #9d845e;
-            --dark-ebony: #1a1a1a;
-            --soft-cream: #fcfaf8;
-            --border-color: #e0ddd5;
-            --luxury-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+            --primary-gold: #b0976d;
+            --soft-white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.75);
+            --luxury-shadow: 0 15px 45px rgba(0, 0, 0, 0.05);
         }
 
         body {
-            background-color: var(--soft-cream);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: var(--dark-ebony);
-            scroll-behavior: smooth;
+            background-color: #fcfcfc;
+            font-family: 'Inter', sans-serif;
+            color: #1a1a1a;
         }
 
-        .serif { font-family: 'Cormorant Garamond', serif; }
-        .luxury-font { font-family: 'Playfair Display', serif; }
+        h1, h2, h3, .luxury-font { font-family: 'Playfair Display', serif; }
 
-        /* === NAVIGATION === */
+        /* Navbar Style từ Code 2 */
         .navbar {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            z-index: 1000;
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0,0,0,0.03);
         }
 
-        /* === CART SECTION STYLE === */
-        .glass-container {
-            background: #fff;
-            border-radius: 24px;
-            padding: 32px;
-            box-shadow: var(--luxury-shadow);
-        }
-
-        .cart-item {
-            padding: 20px 0;
-            border-bottom: 1px solid #f5f5f5;
-            transition: 0.3s;
-        }
-
-        .cart-img {
-            width: 100px;
-            height: 130px;
-            object-fit: cover;
-            border-radius: 12px;
-        }
-
-        .qty-control {
-            display: inline-flex;
-            align-items: center;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 2px 10px;
-        }
-
-        .summary-box {
-            background: var(--dark-ebony);
-            color: #fff;
-            border-radius: 24px;
-            padding: 35px;
+        /* Gallery tinh chỉnh */
+        .product-gallery {
             position: sticky;
             top: 100px;
         }
 
-        /* === CONTACT SECTION STYLE === */
-        .info-card {
-            border-right: 1px solid var(--border-color);
-            padding: 20px;
-        }
-        
-        .glass-form-container {
+        .main-img-wrapper {
+            border-radius: 25px;
+            overflow: hidden;
             background: #fff;
-            padding: 40px;
-            border: 1px solid var(--border-color);
-            position: relative;
-        }
-        .glass-form-container::after {
-            content: "";
-            position: absolute;
-            top: 10px; left: 10px; right: 10px; bottom: 10px;
-            border: 1px solid var(--border-color);
-            pointer-events: none;
+            box-shadow: var(--luxury-shadow);
+            border: 1px solid rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            aspect-ratio: 3/4;
         }
 
-        .form-control-luxury {
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid var(--border-color);
-            border-radius: 0;
-            padding: 10px 0;
+        .main-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s ease;
+        }
+
+        .thumb-img {
+            width: 70px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .thumb-img.active, .thumb-img:hover {
+            opacity: 1;
+            border-color: var(--primary-gold);
+        }
+
+        /* Nội dung sản phẩm */
+        .product-category {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--primary-gold);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .product-title {
+            font-size: 2.8rem;
+            line-height: 1.1;
             margin-bottom: 20px;
         }
 
-        .btn-luxury {
-            background: var(--primary-gold);
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            transition: 0.3s;
-            font-weight: 600;
-        }
-        .btn-luxury:hover {
-            background: var(--dark-ebony);
-            transform: translateY(-2px);
+        .price-section {
+            font-size: 2rem;
+            font-weight: 400;
+            color: #d63031;
+            margin-bottom: 25px;
         }
 
-        /* Phân đoạn */
-        .section-divider {
-            padding: 80px 0;
-            background: white;
-            margin: 60px 0;
+        /* Color & Size Selector */
+        .selector-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            color: #888;
         }
+
+        .color-radio { display: none; }
+        .color-label {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 12px;
+            cursor: pointer;
+            border: 2px solid #fff;
+            box-shadow: 0 0 0 1px #ddd;
+            transition: 0.3s;
+        }
+
+        .color-radio:checked + .color-label {
+            box-shadow: 0 0 0 2px var(--primary-gold);
+            transform: scale(1.1);
+        }
+
+        .size-selector input[type="radio"] {
+            display: none;
+        }
+        .size-label {
+            min-width: 50px;
+            height: 45px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: 0.3s;
+            font-weight: 600;
+            background: #fff;
+        }
+
+        .size-selector input:checked + .size-label {
+            background: #1a1a1a;
+            color: white;
+            border-color: #1a1a1a;
+        }
+
+        /* Buttons */
+        .btn-add-cart {
+            background: #1a1a1a;
+            color: white;
+            padding: 16px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid #1a1a1a;
+            transition: 0.4s;
+            width: 100%;
+        }
+
+        .btn-add-cart:hover {
+            background: transparent;
+            color: #1a1a1a;
+            transform: translateY(-3px);
+        }
+
+        /* Glass Card cho phần Gợi ý (từ Code 2) */
+        .glass-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--luxury-shadow);
+            transition: 0.4s;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+        .glass-card:hover { transform: translateY(-5px); }
+
+
+        .accordion-item {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #eee;
+        }
+
+        .accordion-button {
+            background: transparent !important;
+            padding: 20px 0;
+            font-weight: 600;
+            color: #1a1a1a;
+            box-shadow: none !important;
+        }
+
+        .accordion-button::after {
+            background-size: 12px;
+        }
+
+        .breadcrumb-item a {
+            color: #999;
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .breadcrumb-item.active { color: var(--primary-gold); font-weight: 700; }
     </style>
 </head>
 <body>
 
-    <!-- SHARED NAVBAR -->
     <nav class="navbar navbar-expand-lg sticky-top py-3">
         <div class="container">
-            <a class="navbar-brand luxury-font fs-3 fw-bold" href="#">ĐẸP BOUTIQUE</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <a class="navbar-brand luxury-font fs-3 fw-bold" href="index.html">ĐẸP BOUTIQUE</a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="#cart-section">Giỏ hàng</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact-section">Liên hệ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">BST Mới</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Bộ sưu tập</a></li>
+                    <li class="nav-item"><a class="nav-link active fw-bold" href="san-pham.html">Sản phẩm</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Đặc quyền</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Liên hệ</a></li>
                 </ul>
-                <div class="d-flex align-items-center gap-3">
-                    <div class="text-end d-none d-sm-block me-2">
-                        <p class="mb-0 small fw-bold">1900 1906</p>
-                    </div>
-                    <a href="#cart-section" class="text-dark position-relative">
-                        <i class="fa-solid fa-bag-shopping fs-5"></i>
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger" style="font-size: 0.6rem;">2</span>
-                    </a>
-                </div>
+            </div>
+            <div class="d-flex align-items-center gap-4">
+                <a href="#" class="text-dark position-relative">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-dark" style="font-size: 0.6rem;">2</span>
+                </a>
             </div>
         </div>
     </nav>
 
-    <!-- SECTION 1: CART -->
-    <main id="cart-section" class="container my-5 pt-4">
-        <div class="row mb-5">
-            <div class="col-12">
-                <h1 class="display-5 fw-bold luxury-font">Túi xách của bạn <span class="text-muted fs-4">(02)</span></h1>
+    <main class="container mt-4"> 
+        <nav aria-label="breadcrumb" class="mb-4"> <!-- Giảm mb-5 xuống mb-4 -->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                <li class="breadcrumb-item"><a href="san-pham.html">Bộ sưu tập</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Váy Lụa Satin Luxy</li>
+            </ol>
+        </nav>
+        
+        <div class="row gx-lg-5">
+            <!-- CỘT TRÁI: HÌNH ẢNH -->
+            <div class="col-lg-7">
+                <div class="product-gallery">
+                    <div class="main-img-wrapper">
+                        <img src="https://cdn.hstatic.net/products/200000551481/7642aa5f-59ae-4767-91b4-8d01bbb132b4_5e062723e54b413aa8f3a215dddfd560_master.jpg" id="mainImage" alt="Sản phẩm chính">
+                    </div>
+                    <div class="d-flex gap-3 justify-content-center">
+                        <img src="https://cdn.hstatic.net/products/200000551481/7642aa5f-59ae-4767-91b4-8d01bbb132b4_5e062723e54b413aa8f3a215dddfd560_master.jpg" class="thumb-img active" onclick="changeImage(this.src, this)">
+                        <img src="https://cdn.hstatic.net/products/200000551481/6f911f57-23b0-4916-a3b4-3fe356011489_e3fef547b83f4b5da836d69650c841fb_master.jpg" class="thumb-img" onclick="changeImage(this.src, this)">
+                        <img src="https://cdn.hstatic.net/products/200000551481/974e15cf-36c3-4a74-ae19-53e8309b91e7_fe89175eaa0848e3ba22f487c68ec5bf_master.jpg" class="thumb-img" onclick="changeImage(this.src, this)">
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="row gx-5">
-            <div class="col-lg-8">
-                <div class="glass-container">
-                    <!-- Item 1 -->
-                    <div class="cart-item d-flex gap-4">
-                        <img src="https://cdn.hstatic.net/products/200000551481/7642aa5f-59ae-4767-91b4-8d01bbb132b4_5e062723e54b413aa8f3a215dddfd560_master.jpg" class="cart-img" alt="Product">
-                        <div class="flex-grow-1">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <h6 class="fw-bold mb-1">Đầm Maxi Lụa Burgundy Vanessa</h6>
-                                    <p class="text-muted small">Size: M | Burgundy</p>
-                                </div>
-                                <button class="btn btn-sm text-danger"><i class="fa-regular fa-trash-can"></i></button>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mt-3">
-                                <div class="qty-control">
-                                    <button class="btn btn-sm">-</button>
-                                    <input type="text" value="1" class="border-0 text-center" style="width: 30px;">
-                                    <button class="btn btn-sm">+</button>
-                                </div>
-                                <span class="fw-bold">3.250.000₫</span>
-                            </div>
+            <!-- CỘT PHẢI: THÔNG TIN -->
+            <div class="col-lg-5">
+                <div class="ps-lg-4">
+                    <span class="product-category">Thiết kế giới hạn / Limited</span>
+                    <h1 class="product-title">Đầm Maixi Lụa BURGUNDY VANESSA<br><i class="fw-normal fs-3">Bordeaux Collection</i></h1>
+                    
+                    <div class="price-section">3.250.000₫</div>
+
+                    <p class="text-muted mb-4 lh-lg">
+                        Kiêu sa và đẳng cấp, Burgundy Vanessa là điểm nhấn rực rỡ nhất trong Bordeaux Collection. Chất vải lụa mướt mịn tựa dòng chảy, kết hợp cùng dáng maxi sang trọng, tôn vinh trọn vẹn nét đẹp thanh lịch nhưng không kém phần quyền lực của phái đẹp.
+                    </p>
+
+                    <!-- CHỌN MÀU SẮC (Tính năng mới) -->
+                    <div class="mb-4">
+                        <h6 class="selector-title">Màu sắc: <span id="colorName" class="text-dark">Burgundy</span></h6>
+                        <div class="d-flex">
+                            <input type="radio" name="color" id="color1" class="color-radio" checked onchange="updateColor('Bordeaux', 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=1200')">
+                            <label for="color1" class="color-label" style="background-color: #5b0715;"></label>
                         </div>
                     </div>
-                    <!-- Item 2 -->
-                    <div class="cart-item d-flex gap-4">
-                        <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lpkq4jiwpisb51@resize_w900_nl.webp" class="cart-img" alt="Product">
-                        <div class="flex-grow-1">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <h6 class="fw-bold mb-1">Set Blazer Hàn Quốc Premium</h6>
-                                    <p class="text-muted small">Size: S | Nâu Cafe</p>
+
+                    <!-- CHỌN KÍCH CỠ -->
+                    <div class="mb-5">
+                        <h6 class="selector-title">Kích cỡ</h6>
+                        <div class="size-selector d-flex">
+                            <label><input type="radio" name="size" checked><span class="size-label">S</span></label>
+                            <label><input type="radio" name="size"><span class="size-label">M</span></label>
+                            <label><input type="radio" name="size"><span class="size-label">L</span></label>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-5">
+                        <div class="col-12">
+                            <button class="btn btn-add-cart">Thêm vào giỏ hàng</button>
+                        </div>
+                        <div class="col-12 text-center mt-3">
+                            <a href="#" class="text-dark small text-decoration-none fw-bold border-bottom border-dark pb-1">
+                                <i class="fa-regular fa-heart me-2"></i> Thêm vào danh sách yêu thích
+                            </a>
+                        </div>
+                    </div>
+
+
+
+                    <!-- CHI TIẾT (Accordion) -->
+                    <div class="accordion" id="prodAcc">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#c1">CHI TIẾT SẢN PHẨM</button></h2>
+                            <div id="c1" class="accordion-collapse collapse show">
+                                <div class="accordion-body px-0 text-muted small">
+                                    - 100% lụa mềm cao cấp.<br>
+                                    - Thiết kế dáng Maxi thướt tha kết hợp cùng kỹ thuật cắt may rập 3D tinh xảo, tôn vinh trọn vẹn đường cong phái đẹp.<br>
+                                    - Sản xuất thủ công tại Pháp.
                                 </div>
-                                <button class="btn btn-sm text-danger"><i class="fa-regular fa-trash-can"></i></button>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mt-3">
-                                <div class="qty-control">
-                                    <button class="btn btn-sm">-</button>
-                                    <input type="text" value="1" class="border-0 text-center" style="width: 30px;">
-                                    <button class="btn btn-sm">+</button>
-                                </div>
-                                <span class="fw-bold">750.000₫</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-4">
-                <div class="summary-box">
-                    <h3 class="luxury-font mb-4">Tổng đơn hàng</h3>
-                    <div class="d-flex justify-content-between mb-2 opacity-75">
-                        <span>Tạm tính</span>
-                        <span>4.000.000₫</span>
-                    </div>
-                    <div class="d-flex justify-content-between mb-4 text-success">
-                        <span>Vận chuyển</span>
-                        <span>Miễn phí</span>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-between align-items-end mb-4">
-                        <span class="text-uppercase small">Tổng cộng</span>
-                        <h2 class="mb-0" style="color: var(--primary-gold);">4.000.000₫</h2>
-                    </div>
-                    <button class="btn btn-luxury w-100 rounded-pill">THANH TOÁN NGAY</button>
-                </div>
-            </div>
         </div>
+
+        <!-- GỢI Ý SẢN PHẨM (Style Glass Card) -->
+        <section class="container mt-5 pt-5">
+            <h3 class="luxury-font mb-4">Có thể bạn sẽ thích</h3>
+            <div class="row align-items-center g-4">
+                
+                <!-- Phần sản phẩm (Bây giờ nằm bên TRÁI) -->
+                <div class="col-lg-9">
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="glass-card text-center">
+                                <img src="./img/đầm trễ vai.png" class="img-fluid" alt="related">
+                                <div class="p-3">
+                                    <h6 class="fw-bold mb-1">Đầm Trễ Vai Sang Trọng</h6>
+                                    <span class="fw-bold text-danger" style="letter-spacing: 1px;">999.000₫</span>
+                                    <span class="small text-muted text-decoration-line-through ms-2">1.200.000₫</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="glass-card text-center">
+                                <img src="https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mgpel3ese0we8b.webp" class="img-fluid" alt="related">
+                                <div class="p-3">
+                                    <h6 class="fw-bold mb-1">Váy Lụa Đứng Luxy</h6>
+                                    <span class="text-muted">850.000₫</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="glass-card text-center">
+                                <img src="https://down-vn.img.susercontent.com/file/vn-11134201-7ras8-mb7occz26fg3f4.webp" class="img-fluid" alt="related">
+                                <div class="p-3">
+                                    <h6 class="fw-bold mb-1">Đầm Dài Bodycon</h6>
+                                    <span class="text-muted">4.568.000₫</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- Phần giới thiệu Shop (Bây giờ nằm bên PHẢI) -->
+                <div class="col-lg-3">
+                    <!-- Thêm text-end để căn chữ sang phải cho sang trọng -->
+                    <div class="shop-intro ps-lg-4 text-end"> 
+                        <h2 class="luxury-font mb-3" style="font-size: 2.5rem; letter-spacing: 2px;">Elite <br>Collection</h2>
+                        <p class="text-muted" style="line-height: 1.8; font-style: italic;">
+                            Nơi tôn vinh vẻ đẹp kiêu sa và đẳng cấp thời thượng. Mỗi thiết kế tại cửa hàng là một bản giao hưởng của sự tinh tế, dành riêng cho những quý cô kiếm tìm sự hoàn hảo trong từng đường kim mũi chỉ.
+                        </p>
+                        <div class="mt-4 d-flex flex-column align-items-end">
+                            <!-- Căn chỉnh lại đường kẻ và text nhỏ sang phải -->
+                            <hr style="width: 50px; border-top: 2px solid #b19470; opacity: 1; margin-right: 0;">
+                            <small class="text-uppercase fw-bold" style="letter-spacing: 3px; color: #b19470;">Định nghĩa sự quý phái</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
     </main>
 
-    <!-- SECTION 2: CONTACT -->
-    <div id="contact-section" class="section-divider">
-        <div class="container">
-            <header class="text-center mb-5">
-                <span class="text-muted small">CONCIERGE SERVICE</span>
-                <h2 class="display-4 serif mt-2">Liên Hệ Với Chúng Tôi</h2>
-                <div class="mx-auto mt-3" style="width: 60px; height: 1px; background: var(--vintage-gold);"></div>
-            </header>
-
-            <div class="row g-0 border-top border-bottom mb-5 py-4">
-                <div class="col-md-4">
-                    <div class="info-card text-center">
-                        <i class="fa-solid fa-phone-thin mb-3 text-warning"></i>
-                        <h6 class="small fw-bold">HOTLINE</h6>
-                        <p class="serif fs-5">1900 1906</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="info-card text-center">
-                        <i class="fa-solid fa-location-dot mb-3 text-warning"></i>
-                        <h6 class="small fw-bold">SHOWROOM</h6>
-                        <p class="serif fs-5">Quận 1, TP. Hồ Chí Minh</p>
-                    </div>
-                </div>
-                <div class="col-md-4 text-center p-3">
-                    <h6 class="small fw-bold">EMAIL</h6>
-                    <p class="serif fs-5">support@depboutique.vn</p>
-                </div>
-            </div>
-
-            <div class="row gx-lg-5">
-                <div class="col-lg-6 mb-4">
-                    <div class="glass-form-container">
-                        <h4 class="serif mb-4">Gửi Lời Nhắn Riêng</h4>
-                        <form>
-                            <input type="text" class="form-control-luxury w-100" placeholder="Họ và tên">
-                            <input type="email" class="form-control-luxury w-100" placeholder="Email liên lạc">
-                            <textarea class="form-control-luxury w-100" rows="4" placeholder="Quý khách cần hỗ trợ điều gì?"></textarea>
-                            <button type="button" class="btn btn-luxury mt-3">GỬI YÊU CẦU</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="h-100" style="min-height: 400px;">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.4602324299107!2d106.6647816758654!3d10.776019459200424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1e29f3d99d%3A0xc075454659223788!2zVGVreSBBY2FkZW15!5e0!3m2!1svi!2s!4v1711234567890!5m2!1svi!2s" width="100%" height="100%" style="border:0; filter: grayscale(1);" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- SHARED FOOTER -->
-    <footer class="py-5 bg-white border-top">
+    <footer class="py-4 border-top mt-5">
         <div class="container text-center">
-            <h2 class="luxury-font fs-3">ĐẸP BOUTIQUE</h2>
-            <p class="text-muted small mt-3">© 2026 Crafted with passion. All rights reserved.</p>
-            <div class="mt-4 d-flex justify-content-center gap-4">
-                <a href="#" class="text-dark"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="text-dark"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="text-dark"><i class="fab fa-pinterest-p"></i></a>
-            </div>
+            <p class="text-muted small">© 2026 Đẹp Boutique - Thiết kế bởi Nguyễn Khả Doanh</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Hàm đổi ảnh khi click thumbnail
+        function changeImage(src, el) {
+            document.getElementById('mainImage').src = src;
+            document.querySelectorAll('.thumb-img').forEach(img => img.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        // Hàm đổi ảnh khi chọn màu sắc
+        function updateColor(name, imgSrc) {
+            document.getElementById('colorName').innerText = name;
+            document.getElementById('mainImage').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('mainImage').src = imgSrc;
+                document.getElementById('mainImage').style.opacity = '1';
+            }, 200);
+        }
+    </script>
 </body>
 </html>
