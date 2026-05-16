@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặc Quyền Thành Viên | Đẹp Boutique</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-gold: #b0976d;
+            --soft-white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --luxury-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            background-color: var(--soft-white);
+            font-family: 'Inter', sans-serif;
+            color: #1a1a1a;
+        }
+
+        h1, h2, h3, .luxury-font { font-family: 'Playfair Display', serif; }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0,0,0,0.03);
+        }
+
+        /* === LOYALTY CARD (LIQUID GLASS) === */
+        .member-card {
+            background: linear-gradient(135deg, rgba(26,26,26,0.9) 0%, rgba(51,51,51,0.8) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px;
+            padding: 50px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+        }
+
+        .member-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(176, 151, 109, 0.2) 0%, transparent 70%);
+        }
+
+        .points-display {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1;
+            color: var(--primary-gold);
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* === REWARD TABS === */
+        .nav-pills .nav-link {
+            background: transparent;
+            color: #999;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            border-radius: 50px;
+            padding: 12px 25px;
+            transition: 0.3s;
+        }
+
+        .nav-pills .nav-link.active {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        /* === REWARD CARD LUXURY === */
+        .reward-card {
+            background: #fff;
+            border-radius: 25px;
+            overflow: hidden;
+            transition: 0.4s;
+            border: 1px solid #f0f0f0;
+            height: 100%;
+        }
+
+        .reward-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--luxury-shadow);
+        }
+
+        .reward-img {
+            height: 250px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .points-tag {
+            background: var(--primary-gold);
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .btn-redeem {
+            border: 1px solid #1a1a1a;
+            background: transparent;
+            color: #1a1a1a;
+            width: 100%;
+            border-radius: 50px;
+            padding: 12px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .btn-redeem:hover {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        /* Step Progress */
+        .progress-container {
+            position: relative;
+            margin-top: 40px;
+        }
+        .progress { height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; }
+        .progress-bar { background: var(--primary-gold); }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top py-3">
+        <div class="container">
+            <a class="navbar-brand luxury-font fs-3 fw-bold" href="index.html">ĐẸP BOUTIQUE</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Bộ sưu tập</a></li>
+                    <li class="nav-item"><a class="nav-link" href="san-pham.html">Sản phẩm</a></li>
+                    <li class="nav-item"><a class="nav-link active fw-bold" href="doi-qua.html">Đặc quyền</a></li>
+                    <li class="nav-item"><a class="nav-link" href="lien-he.html">Liên hệ</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5 pt-4">
+        <section class="row mb-5 pb-5 align-items-center">
+            <div class="col-lg-5 mb-5 mb-lg-0">
+                <h1 class="display-3 luxury-font mb-4">Câu Lạc Bộ<br><i>Đặc Quyền</i></h1>
+                <p class="text-muted lh-lg">
+                    Tại Đẹp Boutique, mỗi giao dịch của bạn không chỉ là mua sắm, đó là sự đầu tư cho phong cách. Hãy tích lũy điểm và tận hưởng những đặc quyền chỉ dành riêng cho thành viên cao cấp.
+                </p>
+                <div class="d-flex gap-4 mt-4">
+                    <div class="text-center">
+                        <h4 class="fw-bold mb-0">12</h4>
+                        <small class="text-muted text-uppercase">Quà đã đổi</small>
+                    </div>
+                    <div class="border-start ps-4 text-center">
+                        <h4 class="fw-bold mb-0">Hạng Vàng</h4>
+                        <small class="text-muted text-uppercase">Cấp độ hiện tại</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="member-card">
+                    <div class="d-flex justify-content-between align-items-start mb-5">
+                        <div class="luxury-font fs-3">GOLD MEMBER</div>
+                        <i class="fa-solid fa-gem fs-2 opacity-50"></i>
+                    </div>
+                    <div class="mb-4">
+                        <small class="text-uppercase opacity-50 letter-spacing-2 d-block mb-2">Số điểm khả dụng</small>
+                        <div class="points-display">1.250 <span class="fs-5 text-white fw-normal">điểm</span></div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="d-flex justify-content-between small mb-2 opacity-75">
+                            <span>Hạng Vàng</span>
+                            <span>Cần thêm 750 điểm để lên Kim Cương</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 65%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="text-center mb-5">
+            <h2 class="luxury-font fs-1 mb-4">Danh Mục Quà Tặng</h2>
+            <div class="nav nav-pills justify-content-center gap-2" id="rewardTabs">
+                <button class="nav-link active">Tất cả</button>
+                <button class="nav-link">Phụ kiện</button>
+                <button class="nav-link">Voucher mua sắm</button>
+                <button class="nav-link">Dịch vụ ưu tiên</button>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-md-6 col-lg-3">
+                <div class="reward-card shadow-sm">
+                    <div class="position-relative">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mexttdi5613496.webp" class="reward-img" alt="Reward">
+                    </div>
+                    <div class="p-4">
+                        <span class="points-tag">350 Điểm</span>
+                        <h6 class="fw-bold mb-2">Túi Xách Mini Luxy</h6>
+                        <p class="text-muted small mb-4">Phụ kiện cầm tay phiên bản giới hạn cho các buổi tiệc tối.</p>
+                        <button class="btn btn-redeem">ĐỔI QUÀ NGAY</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="reward-card shadow-sm">
+                    <div class="p-5 text-center bg-light d-flex align-items-center justify-content-center" style="height: 250px;">
+                        <div class="luxury-font text-danger">
+                            <div class="fs-1 fw-bold">500K</div>
+                            <div class="fs-6 letter-spacing-2">VOUCHER</div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <span class="points-tag">500 Điểm</span>
+                        <h6 class="fw-bold mb-2">Voucher Giảm 500.000₫</h6>
+                        <p class="text-muted small mb-4">Áp dụng cho mọi hóa đơn tại cửa hàng và online.</p>
+                        <button class="btn btn-redeem">ĐỔI QUÀ NGAY</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="reward-card shadow-sm">
+                    <div class="position-relative">
+                        <img src="https://static.juno.vn/cmsimage/public/den_mk121_2_20250519160655.jpeg" class="reward-img" alt="Reward">
+                    </div>
+                    <div class="p-4">
+                        <span class="points-tag">350 Điểm</span>
+                        <h6 class="fw-bold mb-2">Kính Mát Cat-Eye</h6>
+                        <p class="text-muted small mb-4">Bảo vệ đôi mắt và nâng tầm phong cách cho mùa hè này.</p>
+                        <button class="btn btn-redeem">ĐỔI QUÀ NGAY</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="reward-card shadow-sm">
+                    <div class="position-relative">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134207-820l4-mhd314a81jbj99.webp" class="reward-img" alt="Reward">
+                    </div>
+                    <div class="p-4">
+                        <span class="points-tag">965 Điểm</span>
+                        <h6 class="fw-bold mb-2">Dây Chuyền Bạc Đính Đá</h6>
+                        <p class="text-muted small mb-4">Điểm nhấn nhẹ nhàng cho các trang phục tối giản.</p>
+                        <button class="btn btn-redeem">ĐỔI QUÀ NGAY</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-5 bg-white border-top mt-5">
+        <div class="container text-center">
+            <p class="text-muted small">© 2026 Đẹp Boutique - Thiết kế cao cấp bởi <b>Nguyễn Khả Doanh</b>.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

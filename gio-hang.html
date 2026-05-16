@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng | Đẹp Boutique</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-gold: #c5a059;
+            --dark-ebony: #1a1a1a;
+            --soft-cream: #fcfaf8;
+            --glass-white: rgba(255, 255, 255, 0.85);
+            --luxury-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+        }
+
+        body {
+            background-color: var(--soft-cream);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--dark-ebony);
+            letter-spacing: -0.01em;
+        }
+
+        h1, h2, h3, .luxury-font { 
+            font-family: 'Playfair Display', serif; 
+            letter-spacing: 0.02em;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0,0,0,0.03);
+        }
+
+
+        /* Cart Container */
+        .glass-container {
+            background: #fff;
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: var(--luxury-shadow);
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .cart-item {
+            padding: 24px 0;
+            border-bottom: 1px solid #f5f5f5;
+            transition: all 0.3s ease;
+        }
+        .cart-item:hover {
+            transform: translateX(5px);
+        }
+        .cart-item:last-child { border-bottom: none; }
+
+        .cart-img {
+            width: 110px;
+            height: 145px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        /* Quantity Control */
+        .qty-control {
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 4px 12px;
+            background: #fff;
+        }
+        .qty-btn {
+            background: none;
+            border: none;
+            font-size: 1rem;
+            color: var(--dark-ebony);
+            cursor: pointer;
+            padding: 5px 8px;
+        }
+        .qty-input {
+            width: 35px;
+            border: none;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Summary Sidebar */
+        .summary-box {
+            background: var(--dark-ebony);
+            color: #fff;
+            border-radius: 24px;
+            padding: 35px;
+            position: sticky;
+            top: 110px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .summary-title {
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        .summary-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--primary-gold);
+            margin-top: 10px;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .btn-checkout {
+            background: var(--primary-gold);
+            color: white;
+            width: 100%;
+            padding: 16px;
+            border-radius: 12px;
+            border: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 25px;
+            transition: 0.3s;
+        }
+        .btn-checkout:hover {
+            background: #d4ae6a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(197, 160, 89, 0.3);
+        }
+
+        /* Promo Box */
+        .promo-card {
+            background: #fff;
+            border-radius: 16px;
+            border: 1px dashed var(--primary-gold);
+            padding: 20px;
+            transition: 0.3s;
+        }
+        .promo-card:hover {
+            background: #fffdf9;
+        }
+
+        /* Badge Custom */
+        .badge-luxury {
+            background: rgba(197, 160, 89, 0.1);
+            color: var(--primary-gold);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top py-3">
+        <div class="container">
+            <a class="navbar-brand luxury-font fs-3 fw-bold" href="index.html">ĐẸP BOUTIQUE</a>
+            <div class="ms-auto d-flex align-items-center gap-3">
+                <div class="text-end d-none d-sm-block">
+                    <p class="mb-0 small fw-bold">Hỗ trợ 24/7</p>
+                    <p class="mb-0 small text-muted">1900 1906</p>
+                </div>
+                <div class="vr mx-2 h-25"></div>
+                <i class="fa-solid fa-bag-shopping fs-5"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div class="row align-items-end mb-5">
+            <div class="col-md-8">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-2">
+                        <li class="breadcrumb-item small text-muted"><a href="#" class="text-decoration-none text-muted">Trang chủ</a></li>
+                        <li class="breadcrumb-item small active">Giỏ hàng</li>
+                    </ol>
+                </nav>
+                <h1 class="display-5 fw-bold">Giỏ hàng của bạn <span class="text-muted fs-4">(02)</span></h1>
+            </div>
+        </div>
+
+        <div class="row gx-5">
+            <div class="col-lg-8">
+                <div class="glass-container">
+                    <!-- Item 1 -->
+                    <div class="cart-item d-flex gap-4">
+                        <img src="https://cdn.hstatic.net/products/200000551481/7642aa5f-59ae-4767-91b4-8d01bbb132b4_5e062723e54b413aa8f3a215dddfd560_master.jpg" class="cart-img" alt="Product">
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <span class="badge-luxury mb-2 d-inline-block">New Collection</span>
+                                    <h5 class="fw-bold mb-1">Đầm Maxi Lụa Burgundy Vanessa</h5>
+                                    <p class="text-muted small mb-0">Size: M | Màu sắc: Burgundy</p>
+                                </div>
+                                <button class="btn btn-sm text-danger opacity-50"><i class="fa-regular fa-trash-can"></i></button>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <div class="qty-control">
+                                    <button class="qty-btn"><i class="fa-solid fa-minus fa-xs"></i></button>
+                                    <input type="text" value="1" class="qty-input" readonly>
+                                    <button class="qty-btn"><i class="fa-solid fa-plus fa-xs"></i></button>
+                                </div>
+                                <span class="fw-bold fs-5">3.250.000₫</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="cart-item d-flex gap-4">
+                        <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lpkq4jiwpisb51@resize_w900_nl.webp" class="cart-img" alt="Product">
+                        <div class="flex-grow-1">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <span class="badge-luxury mb-2 d-inline-block">Best Seller</span>
+                                    <h5 class="fw-bold mb-1">Set Blazer Hàn Quốc Premium</h5>
+                                    <p class="text-muted small mb-0">Size: S | Màu sắc: Nâu Cafe</p>
+                                </div>
+                                <button class="btn btn-sm text-danger opacity-50"><i class="fa-regular fa-trash-can"></i></button>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <div class="qty-control">
+                                    <button class="qty-btn"><i class="fa-solid fa-minus fa-xs"></i></button>
+                                    <input type="text" value="1" class="qty-input" readonly>
+                                    <button class="qty-btn"><i class="fa-solid fa-plus fa-xs"></i></button>
+                                </div>
+                                <span class="fw-bold fs-5">750.000₫</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Promo Section -->
+                <div class="promo-card mt-4 d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="bg-warning bg-opacity-10 p-3 rounded-circle">
+                            <i class="fa-solid fa-ticket-simple text-warning"></i>
+                        </div>
+                        <div>
+                            <h6 class="mb-0 fw-bold">Mã giảm giá khả dụng</h6>
+                            <p class="small text-muted mb-0">Bạn đang có 2 ưu đãi chờ áp dụng</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-dark btn-sm rounded-pill px-4">Áp dụng</button>
+                </div>
+            </div>
+
+            <!-- Sidebar Summary -->
+            <div class="col-lg-4 mt-5 mt-lg-0">
+                <div class="summary-box">
+                    <h2 class="luxury-font summary-title">Tổng đơn hàng</h2>
+                    
+                    <div class="price-row mt-4">
+                        <span>Tạm tính</span>
+                        <span class="text-white fw-bold">4.000.000₫</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Phí vận chuyển</span>
+                        <span class="text-success fw-bold">Miễn phí</span>
+                    </div>
+                    <div class="price-row border-bottom border-secondary pb-3 mb-3">
+                        <span>Khuyến mãi</span>
+                        <span class="text-white fw-bold">-0₫</span>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-end my-4">
+                        <span class="text-uppercase small opacity-50">Tổng cộng</span>
+                        <div class="text-end">
+                            <h2 class="mb-0 fw-bold" style="color: var(--primary-gold);">4.000.000₫</h2>
+                            <small class="opacity-50">Đã bao gồm VAT</small>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-checkout">Thanh Toán An Toàn</button>
+
+                    <div class="mt-4 pt-4 border-top border-secondary">
+                        <div class="d-flex gap-3 mb-3">
+                            <i class="fa-solid fa-truck-fast opacity-50"></i>
+                            <span class="small opacity-75">Giao hàng tiêu chuẩn (2-3 ngày)</span>
+                        </div>
+                        <div class="d-flex gap-3">
+                            <i class="fa-solid fa-arrow-rotate-left opacity-50"></i>
+                            <span class="small opacity-75">Đổi trả trong vòng 7 ngày</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-5 mt-5">
+        <div class="container text-center">
+            <p class="text-muted small mb-0">© 2026 <b>ĐẸP BOUTIQUE</b>. Crafted with passion by Khả Doanh.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
